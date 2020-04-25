@@ -63,8 +63,8 @@ class SentenceClassifier:
         if csv_path is not None:
             raise NotImplementedError
 
-        sentences = list(dataframe[dataframe.columns[sentences_column_name]])
-        labels = dataframe[dataframe.columns[labels_column_name]].values
+        sentences = dataframe[sentences_column_name].values
+        labels = dataframe[labels_column_name].values
 
         training_sentences, validation_sentences, training_labels, validation_labels = train_test_split(
             sentences, labels, test_size=validation_split, shuffle=True)
