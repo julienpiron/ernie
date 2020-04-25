@@ -126,13 +126,12 @@ class SentenceClassifier:
 
         temporary_path = self._get_temporary_path(name=self._model.name)
 
-        for i in range(epochs):
-            self._model.fit(training_features,
-                            epochs=1,
-                            validation_data=validation_features,
-                            steps_per_epoch=training_steps,
-                            validation_steps=validation_steps,
-                            **kwargs)
+        self._model.fit(training_features,
+                        epochs=epochs
+                        validation_data=validation_features,
+                        steps_per_epoch=training_steps,
+                        validation_steps=validation_steps,
+                        **kwargs)
 
         # The fine-tuned model does not have the same input interface after being
         # exported and loaded again.
