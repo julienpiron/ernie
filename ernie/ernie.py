@@ -56,15 +56,15 @@ class SentenceClassifier:
     def tokenizer(self):
         return self._tokenizer
 
-    def load_dataset(self, dataframe=None, csv_path=None, validation_split=0.1):
+    def load_dataset(self, dataframe=None, csv_path=None, validation_split=0.1, sentences_column_name=0, labels_column_name=1):
         if dataframe is None and csv_path is None:
             raise ValueError
 
         if csv_path is not None:
             raise NotImplementedError
 
-        sentences = list(dataframe[dataframe.columns[0]])
-        labels = dataframe[dataframe.columns[1]].values
+        sentences = list(dataframe[dataframe.columns[sentences_column_name]])
+        labels = dataframe[dataframe.columns[labels_column_name]].values
 
         training_sentences, validation_sentences, training_labels, validation_labels = train_test_split(
             sentences, labels, test_size=validation_split, shuffle=True)
