@@ -127,7 +127,7 @@ class SentenceClassifier:
         temporary_path = self._get_temporary_path(name=self._model.name)
 
         self._model.fit(training_features,
-                        epochs=epochs
+                        epochs=epochs,
                         validation_data=validation_features,
                         steps_per_epoch=training_steps,
                         validation_steps=validation_steps,
